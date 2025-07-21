@@ -1,16 +1,332 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>kai+</title>
+<html lang="en" class="bg-white text-gray-900">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KAI+</title>
 
-  <!-- Tailwind CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-white text-gray-900">
-  <main class="min-h-screen flex items-center justify-center">
-    <h1 class="text-5xl font-bold">Welcome to kai+</h1>
-  </main>
-</body>
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Font: DM Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap" rel="stylesheet" />
+    <style>
+      body {
+        font-family: 'DM Sans', sans-serif;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+    </style>
+
+    <!-- Swiper CSS -->
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+
+    <!-- GSAP + ScrollTrigger -->
+    <script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+    <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
+  </head>
+
+  <body class="overflow-x-hidden snap-y snap-mandatory h-screen overflow-scroll">
+
+    <!-- Sticky Navbar -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 md:px-8 py-4 flex items-center justify-between text-base font-medium relative">
+  
+      <!-- Left Links -->
+      <nav class="flex items-center space-x-6">
+        <a href="#mainContent" class="text-gray-600 hover:text-black transition">Home</a>
+        <a href="#programs" class="text-gray-600 hover:text-black transition">Programs</a>
+        <a href="#placement" class="text-gray-600 hover:text-black transition">Placement Test</a>
+        <a href="#freebies" class="text-gray-600 hover:text-black transition">Freebies</a>
+      </nav>
+  
+      <!-- Center Logo -->
+      <div class="absolute left-1/2 transform -translate-x-1/2 text-4xl font-extrabold tracking-wide text-gray-800">
+        KAI+
+      </div>
+  
+      <!-- Right Icons -->
+      <div class="flex items-center space-x-6 text-gray-600">
+        <a href="#book" class="bg-teal-500 text-white px-3 py-1.5 rounded hover:bg-teal-600 transition">Book Trial</a>
+        <a href="#faq" class="hover:text-black transition">FAQ</a>
+  
+        <!-- Phone Icon (Contact) -->
+        <a href="#contact" class="hover:text-black transition" title="Contact">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M3 5a2 2 0 012-2h2l3 7-2 1a16 16 0 006.29 6.29l1-2 7 3v2a2 2 0 01-2 2h-1C10.75 21 3 13.25 3 5z" />
+            </svg>
+        </a>
+  
+  
+        <!-- Heart Icon -->
+        <a href="#testimonials" class="hover:text-red-500 transition" title="Testimonials">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path
+              d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42
+              4.42 3 7.5 3c1.74 0 3.41 1.01
+              4.5 2.09C13.09 4.01 14.76 3 16.5 3 19.58
+              3 22 5.42 22 8.5c0 3.78-3.4
+              6.86-8.55 11.54L12 21.35z" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </header>
+  
+  
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="hidden md:hidden bg-white shadow px-6 pb-4 space-y-3">
+        <a href="#mainContent" class="block text-gray-600 hover:text-black">Home</a>
+        <a href="#programs" class="block text-gray-600 hover:text-black">Programs</a>
+        <a href="#" class="block text-white bg-teal-500 px-4 py-2 rounded hover:bg-teal-600">Book Trial</a>
+      </div>
+    </header>
+
+    <!-- Splash Section -->
+    <section id="splash" class="snap-start h-screen flex flex-col justify-center items-center bg-[#FAF9F6] pt-20 relative">
+      <h1 id="splashTitle" class="text-6xl font-bold mb-4 opacity-0 translate-y-6">Welcome to <span class="tracking-tight">KAI+</span></h1>
+      <p id="splashSubtitle" class="text-xl text-gray-600 opacity-0 translate-y-6">Achieve your language goals with us.</p>
+      <div class="absolute bottom-6 animate-bounce text-gray-400 text-2xl">↓</div>
+    </section>
+
+    <!-- Hero Section -->
+    <section id="mainContent" class="snap-start h-screen pt-20 flex flex-col md:flex-row overflow-hidden opacity-0">
+      <div class="md:w-1/2 h-64 md:h-screen overflow-hidden">
+        <img src="assets/your-image.png" alt="Study scene" class="w-full h-full object-cover" />
+      </div>
+      <div class="md:w-1/2 px-8 py-12 flex flex-col justify-center items-start md:pl-20">
+        <h2 class="text-4xl md:text-5xl font-bold mb-6 leading-tight">Struggling with IELTS?</h2>
+        <p class="text-lg text-gray-700 mb-6 max-w-md">
+          We help you pass — without the stress. Programs designed for working adults who just need the right system.
+        </p>
+        <a href="#programs" class="inline-block bg-teal-500 text-white px-6 py-3 rounded hover:bg-teal-600 transition">
+          View Programs
+        </a>
+      </div>
+    </section>
+
+    <!-- Study Programs Section -->
+    <section id="programs" class="snap-start h-screen bg-white py-16 px-6 md:px-20 flex flex-col justify-center pt-20">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold mb-10 text-center">Our Study Programs</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="bg-[#FAF9F6] rounded-lg p-6 shadow hover:shadow-md transition">
+            <h3 class="text-xl font-semibold mb-2">Foundation Course</h3>
+            <p class="text-gray-700 mb-4">Perfect for beginners who want to understand the IELTS structure and build strong fundamentals.</p>
+            <span class="text-sm text-gray-500">8 Weeks · Group Sessions</span>
+          </div>
+          <div class="bg-[#FAF9F6] rounded-lg p-6 shadow hover:shadow-md transition">
+            <h3 class="text-xl font-semibold mb-2">Intermediate Fast-Track</h3>
+            <p class="text-gray-700 mb-4">For those familiar with IELTS but aiming to quickly boost their band score.</p>
+            <span class="text-sm text-gray-500">4 Weeks · Intensive Practice</span>
+          </div>
+          <div class="bg-[#FAF9F6] rounded-lg p-6 shadow hover:shadow-md transition">
+            <h3 class="text-xl font-semibold mb-2">Private Coaching WITH THE PROFESSIONAL ALISA SCHASTLIVENKO</h3>
+            <p class="text-gray-700 mb-4">1-on-1 personalised support for students with specific goals or time constraints.</p>
+            <span class="text-sm text-gray-500">Flexible Schedule · Custom Plan</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Placement Test Section -->
+    <section id="placement" class="snap-start h-screen bg-[#F9FAFB] px-6 md:px-20 flex flex-col justify-center items-center text-center pt-20 opacity-0 translate-y-10 transition-all duration-700 ease-out">
+        <div class="max-w-2xl">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Not sure where to start?</h2>
+        <p class="text-gray-700 text-lg mb-8">
+            Take our quick placement test to find out your current level and get personalized program recommendations.
+        </p>
+        <a href="#"
+            class="bg-teal-500 text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-teal-600 transition shadow">
+            Take the Test Now
+        </a>
+        </div>
+    </section>
+  
+    <!-- Freebies Section -->
+    <section id="freebies" class="snap-start h-screen bg-white px-6 md:px-20 py-16 flex flex-col justify-center opacity-0 translate-y-10 transition-all duration-700 ease-out">
+        <div class="max-w-6xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-10">Free Study Materials</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+            <!-- Freebie 1 -->
+            <div class="bg-[#FAF9F6] p-6 rounded-lg shadow hover:shadow-md transition">
+            <h3 class="text-xl font-semibold mb-2">IELTS Vocab List</h3>
+            <p class="text-gray-700 mb-4">Essential academic and topic-specific vocabulary for high band scores.</p>
+            <a href="#" class="text-teal-600 font-semibold hover:underline">Download PDF →</a>
+            </div>
+            <!-- Freebie 2 -->
+            <div class="bg-[#FAF9F6] p-6 rounded-lg shadow hover:shadow-md transition">
+            <h3 class="text-xl font-semibold mb-2">Speaking Sample Topics</h3>
+            <p class="text-gray-700 mb-4">Practice with real-world questions and model answers.</p>
+            <a href="#" class="text-teal-600 font-semibold hover:underline">Download PDF →</a>
+            </div>
+            <!-- Freebie 3 -->
+            <div class="bg-[#FAF9F6] p-6 rounded-lg shadow hover:shadow-md transition">
+            <h3 class="text-xl font-semibold mb-2">Writing Task 2 Template</h3>
+            <p class="text-gray-700 mb-4">Learn how to structure essays with clarity and logic.</p>
+            <a href="#" class="text-teal-600 font-semibold hover:underline">Download PDF →</a>
+            </div>
+        </div>
+        </div>
+    </section>
+  
+    <!-- Testimonials Section -->
+<!-- Testimonials Section -->
+<section id="testimonials" class="snap-start h-screen bg-[#FAF9F6] px-6 md:px-20 py-16 flex flex-col justify-center items-center text-center opacity-0 translate-y-10 transition-all duration-700 ease-out">
+    <div class="max-w-4xl w-full">
+  
+      <!-- Heading -->
+      <h2 class="text-3xl md:text-4xl font-bold mb-10">What Our Students Say About Us</h2>
+  
+      <!-- Swiper -->
+      <div class="relative">
+        <div class="swiper mySwiper">
+          <div class="swiper-wrapper">
+            <!-- Slide 1 -->
+            <div class="swiper-slide bg-white p-6 rounded-lg shadow text-left">
+              <p class="text-gray-800 italic mb-4">"O.M.G! I LOVE YOU ALISA!"</p>
+              <div class="text-sm font-semibold text-gray-700">— Caleb O., Working Professional</div>
+            </div>
+            <!-- Slide 2 -->
+            <div class="swiper-slide bg-white p-6 rounded-lg shadow text-left">
+              <p class="text-gray-800 italic mb-4">"I would die for another class with my favourite teacher Alisa, she's so beautiful and cute and sexy and i just want to eat her face!"</p>
+              <div class="text-sm font-semibold text-gray-700">— Caleb O., University Applicant</div>
+            </div>
+            <!-- Slide 3 -->
+            <div class="swiper-slide bg-white p-6 rounded-lg shadow text-left">
+              <p class="text-gray-800 italic mb-4">"After learning English, I can now write long essays and that has really helped me in many ways! One way is that i can now write really heartfelt and long love messages for my baby girl (you), and i can also make her smile by saying dumb things all the time!"</p>
+              <div class="text-sm font-semibold text-gray-700">— Caleb Ong, Full-time Nurse</div>
+            </div>
+          </div>
+  
+          <!-- Pagination -->
+          <div class="swiper-pagination mt-6"></div>
+  
+        
+  
+  </section>
+  
+  
+
+    <script>
+      gsap.registerPlugin(ScrollTrigger);
+
+      // Splash intro
+      gsap.to("#splashTitle", { opacity: 1, y: 0, duration: 1.2, delay: 0.3, ease: "power2.out" });
+      gsap.to("#splashSubtitle", { opacity: 1, y: 0, duration: 1, delay: 0.6, ease: "power2.out" });
+
+      // Hero fade in
+      gsap.to("#mainContent", {
+        scrollTrigger: { trigger: "#mainContent", start: "top 90%", end: "top 60%", scrub: true },
+        opacity: 1
+      });
+
+      // Programs animation
+      gsap.from("#programs h2", {
+        scrollTrigger: { trigger: "#programs", start: "top 90%", toggleActions: "play none none reverse" },
+        y: 50,
+        opacity: 0,
+        duration: 1
+      });
+
+      // Animate Placement Test section
+        gsap.fromTo("#placement", 
+        { opacity: 0, y: 50 }, 
+        {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: "power2.out",
+            scrollTrigger: {
+            trigger: "#placement",
+            start: "top 85%",
+            end: "bottom 20%",
+            toggleActions: "play reverse play reverse",
+            },
+        }
+        );
+
+    // Animate Freebies section
+        gsap.fromTo("#freebies", 
+        { opacity: 0, y: 50 }, 
+        {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: "power2.out",
+            scrollTrigger: {
+            trigger: "#freebies",
+            start: "top 85%",
+            end: "bottom 20%",
+            toggleActions: "play reverse play reverse",
+            },
+        }
+        );
+
+            gsap.fromTo("#testimonials", 
+    { opacity: 0, y: 50 }, 
+    {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: "power2.out",
+        scrollTrigger: {
+        trigger: "#testimonials",
+        start: "top 85%",
+        end: "bottom 20%",
+        toggleActions: "play reverse play reverse",
+        },
+    }
+    );
+
+
+        // Initialize Swiper for Testimonials
+        const swiper = new Swiper(".mySwiper", {
+        loop: true,
+        spaceBetween: 40,
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+        },
+        autoplay: {
+            delay: 5000, // 5 seconds per slide
+            disableOnInteraction: false,
+        },
+        });
+
+
+
+
+      // Mobile nav toggle
+      const btn = document.getElementById("menu-btn");
+      const menu = document.getElementById("mobile-menu");
+      btn.addEventListener("click", () => {
+        menu.classList.toggle("hidden");
+      });
+
+      // Highlight active link
+      const navLinks = document.querySelectorAll(".nav-link");
+      window.addEventListener("scroll", () => {
+        const scrollY = window.scrollY;
+        navLinks.forEach(link => {
+          const section = document.querySelector(link.getAttribute("href"));
+          if (section.offsetTop - 100 <= scrollY && scrollY < section.offsetTop + section.offsetHeight - 100) {
+            link.classList.add("text-black", "font-semibold");
+            link.classList.remove("text-gray-600");
+          } else {
+            link.classList.remove("text-black", "font-semibold");
+            link.classList.add("text-gray-600");
+          }
+        });
+      });
+    </script>
+  </body>
 </html>
